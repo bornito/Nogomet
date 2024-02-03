@@ -1,0 +1,80 @@
+﻿<Window x:Class="WPFAplikacija.Postavke"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAplikacija"
+        mc:Ignorable="d"
+        Title="{x:Static lang:Resources.WindowSettings}" Height="450" Width="800">
+
+    <Window.Resources>
+        <LinearGradientBrush x:Key="background" StartPoint="0,0" EndPoint="1,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="Purple" />
+                <GradientStop Offset="0" Color="MediumPurple" />
+                <GradientStop Offset="1" Color="PeachPuff" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <EventTrigger x:Key="animation" RoutedEvent="Grid.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation 
+                                 Storyboard.TargetProperty="Background.GradientStops[1].Offset"
+                                 To="1"  
+                                 Duration="0:0:5" 
+                                 AutoReverse="True" 
+                                 RepeatBehavior="Forever" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource ResourceKey=background}">
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="Language" Grid.Row="2" Grid.Column="2" Margin="5" Content="{x:Static lang:Resources.Language}"/>
+        <RadioButton x:Name="rbtnEnglish" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Language" Margin="10" Content="{x:Static lang:Resources.rbtnEnglishLanguage}" IsChecked="True"/>
+        <RadioButton x:Name="rbtnCroatian" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Language" Margin="90 10 10 10" Content="{x:Static lang:Resources.rbtnCroatianLanguage}"/>
+
+        <Label x:Name="Championship" Grid.Row="4" Grid.Column="2" Margin="5" Content="{x:Static lang:Resources.Championship}"/>
+        <RadioButton x:Name="rbtnFemale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="10" Content="{x:Static lang:Resources.rbtnFemale}" IsChecked="True"/>
+        <RadioButton x:Name="rbtnMale" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" GroupName="Gender" Margin="90 10 10 10" Content="{x:Static lang:Resources.rbtnMale}"/>
+
+        <Label x:Name="Resolution" Grid.Row="7" Grid.Column="2" Margin="5" Content="{x:Static lang:Resources.Resolution}"/>
+        <RadioButton x:Name="rbtn480p" Grid.Row="6" Grid.Column="3" VerticalAlignment="Top" Width="100" Height="15" Margin="-8" Content="800 x 500"/>
+        <RadioButton x:Name="rbtn720p" Grid.Row="7" Grid.Column="3" VerticalAlignment="Top" Width="100" Height="15" Margin="-8" Content="1280 x 720"/>
+        <RadioButton x:Name="rbtn1080p" Grid.Row="8" Grid.Column="3" VerticalAlignment="Top" Width="100" Height="15" Margin="-8" Content="1920 x 1080" IsChecked="True"/>
+        <RadioButton x:Name="rbtnFullScreen" Grid.Row="9" Grid.Column="3" VerticalAlignment="Top" Width="100" Height="15" Margin="-8" Content="Full screen"/>
+
+        <Button x:Name="btnAccept" Grid.Row="10" Grid.Column="2" Width="120" Height="30" Content="{x:Static lang:Resources.btnAccept}" Click="BtnAccept_Click" IsDefault="True"/>
+        <Button x:Name="btnCancel" Grid.Row="10" Grid.Column="3" Width="120" Height="30" Content="{x:Static lang:Resources.btnCancel}" Click="BtnCancel_Click" IsCancel="True"/>
+
+        <Grid.Triggers>
+            <StaticResourceExtension ResourceKey="animation"/>
+        </Grid.Triggers>
+    </Grid>
+</Window>
